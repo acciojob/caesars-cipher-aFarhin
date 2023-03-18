@@ -1,16 +1,51 @@
-function rot13(encodedStr) {
-  var decodedStr = "";
-  for (var i = 0; i < encodedStr.length; i++) {
-    var char = encodedStr[i];
-    if (char.match(/[A-Z]/)) {
-      var code = encodedStr.charCodeAt(i);
-      if (code >= 78) {
-        char = String.fromCharCode(code - 13);
-      } else {
-        char = String.fromCharCode(code + 13);
+var lookup = {
+    A: "N",
+    B: "O",
+    C: "P",
+    D: "Q",
+    E: "R",
+    F: "S",
+    G: "T",
+    H: "U",
+    I: "V",
+    J: "W",
+    K: "X",
+    L: "Y",
+    M: "Z",
+    N: "A",
+    O: "B",
+    P: "C",
+    Q: "D",
+    R: "E",
+    S: "F",
+    T: "G",
+    U: "H",
+    V: "I",
+    W: "J",
+    X: "K",
+    Y: "L",
+    Z: "M",
+    "?": "?",
+    ",": ",",
+  };
+  
+  function rot13(encodedStr) {
+    var words = encodedStr.split(" "); 
+    let decodedArr = []; 
+    
+    for (let i = 0; i < words.length; i++) {
+      const word = words[i];
+      let decoded_word = "";
+      for (let j = 0; j < word.length; j++) {
+        var char = word.charAt(j);
+        var decoded_char = lookup[char];
+        decoded_word += decoded_char;
       }
+      decodedArr.push(decoded_word);
     }
-    decodedStr += char;
+    return decodedArr.join(" ");
   }
-  return decodedStr;
-}
+  
+ //  console.log(rot13("V NZ SNEUVA"));
+  
+  module.exports = rot13;
