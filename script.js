@@ -45,7 +45,7 @@ var lookup = {
     }
     return decodedArr.join(" ");
   }
-  
+ module.exports = rot13;  
  //  console.log(rot13("V NZ SNEUVA"));
   
  
